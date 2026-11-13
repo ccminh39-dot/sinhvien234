@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,6 +8,17 @@ version = "1.0.0"
 description = "Hưng Phát AI Agent Thẩm Định Mở Rộng Thị Trường"
 readme = "README.md"
 requires-python = ">=3.9"
+dependencies = []
+
+[tool.setuptools.packages.find]
+include = ["agent*", "api*", "hungphat_expansion_agent*"]
+exclude = ["ui*", "data*", "logs*", "reports*", "tests*", "scripts*"]
+
+[tool.setuptools]
+py-modules = ["index", "app", "web_server", "wsgi_server"]
+
+[tool.setuptools.package-data]
+"*" = ["*"]
 
 [tool.vercel]
 entrypoint = "index:app"
